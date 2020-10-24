@@ -1,4 +1,4 @@
-module addreality
+module github.com/egsam98/pings-counter
 
 go 1.14
 

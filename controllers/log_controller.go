@@ -1,15 +1,15 @@
 package controllers
 
 import (
+	"errors"
 	"log"
 	"net/http"
-	"strconv"
 
 	"github.com/valyala/fasthttp"
 	"github.com/valyala/fasthttprouter"
 
-	"addreality/db"
-	"addreality/services"
+	"github.com/egsam98/pings-counter/db"
+	"github.com/egsam98/pings-counter/services"
 )
 
 type LogController struct {
@@ -27,13 +27,12 @@ func InitLogController(r *fasthttprouter.Router, client *db.PrismaClient) {
 	r.GET("/count", lc.get)
 }
 
-func (lc *LogController) post(ctx *fasthttp.RequestCtx, _ fasthttprouter.Params) {
-	userId, err := strconv.Atoi(string(ctx.QueryArgs().Peek("user_id")))
+func (lc *LogController) post(ctx *fasthttp.RequestCtx, params fasthttprouter.Params) {
+	userId, err := ctx.QueryArgs().GetUint("user_id")
 	if err != nil {
-		respondErrorJSON(ctx, http.StatusNotFound, err)
+		respondErrorJSON(ctx, http.StatusBadRequest, errors.New("'user_id' unsigned integer must be provided"))
 		return
 	}
-
 	go lc.log(ctx, userId)
 }
 

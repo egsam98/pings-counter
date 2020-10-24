@@ -5,8 +5,8 @@ import (
 
 	"github.com/pkg/errors"
 
-	"addreality/db"
-	"addreality/utils/gqlerrors"
+	"github.com/egsam98/pings-counter/db"
+	"github.com/egsam98/pings-counter/utils/gqlerrors"
 )
 
 type LogService struct {

@@ -7,9 +7,9 @@ import (
 	"github.com/valyala/fasthttp"
 	"github.com/valyala/fasthttprouter"
 
-	"addreality/controllers"
-	"addreality/db"
-	j "addreality/jobs"
+	"github.com/egsam98/pings-counter/controllers"
+	"github.com/egsam98/pings-counter/db"
+	j "github.com/egsam98/pings-counter/jobs"
 )
 
 func main() {

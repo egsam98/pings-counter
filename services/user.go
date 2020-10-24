@@ -5,7 +5,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"addreality/db"
+	"github.com/egsam98/pings-counter/db"
 )
 
 type UserService struct {
